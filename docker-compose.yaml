@@ -1,16 +1,18 @@
 version: '3.3'
 services:
   mongo:
-    image: mongo    
+    image: mongo
     restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: 123456
     ports:
       - 27017:27017
+    volumes:
+      - ~/mongo/data:/data/db
 
   projeto-py:
-    depends_on: 
+    depends_on:
         - mongo
     image: projeto-py
     ports:
